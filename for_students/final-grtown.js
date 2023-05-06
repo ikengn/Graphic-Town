@@ -29,7 +29,7 @@ import { Medhouse } from "./medhouse.js";
 import { Flag } from "./flag.js";
 import { ConeTree } from "./conetree.js"
 import { Crate } from "./crate.js";
-import { WatchTower } from "./watchtower.js";
+import { WatchTower } from "./flag.js";
 import { Ground } from "./groundplane.js";
 
 function convertAngle(degree) {
@@ -180,7 +180,10 @@ crate3.objects[0].rotateY(convertAngle(40));
 
 let tower1 = new WatchTower();
 world.add(tower1);
-tower1.setPos(0,10,0)
+tower1.setPos(16,1,-9);
+let tower2 = new WatchTower();
+world.add(tower2);
+tower2.setPos(-10,1,4)
 
 // while making your objects, be sure to identify some of them as "highlighted"
 
