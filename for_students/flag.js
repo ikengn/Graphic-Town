@@ -1,5 +1,6 @@
 import { GrObject } from "../libs/CS559-Framework/GrObject.js";
 import * as T from "../libs/CS559-Three/build/three.module.js";
+import { shaderMaterial } from "../libs/CS559-Framework/shaderHelper.js";
 
 function convertAngle(degree) {
     return degree * Math.PI/180;
@@ -8,6 +9,8 @@ function convertAngle(degree) {
 export class Flag extends GrObject {
     constructor() {
         let flag = new T.Group();
+        super("Flag", flag);
+
         let col_mat = new T.MeshStandardMaterial({
             color: 0xaaa9ad,
             roughness: 0.0,
@@ -18,7 +21,7 @@ export class Flag extends GrObject {
         col.translateY(4);
 
         let leaf_geom = new T.BoxGeometry(4,2,0.05);
-        let leaf_mat = new T.ShaderMaterial("./shaders/flag.vs", "./shaders/flag.fs", {
+        let leaf_mat = new shaderMaterial("./shaders/flag.vs", "./shaders/flag.fs", {
             side: T.DoubleSide,
             uniforms: {}
         });
@@ -27,7 +30,6 @@ export class Flag extends GrObject {
         leaf.translateY(7);
         leaf.translateX(2);
         
-        super("Flag", flag);
         this.leaf = leaf;
     }
 

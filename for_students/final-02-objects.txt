@@ -1,29 +1,29 @@
 (Required) Two kinds of objects created for this assignment:
-1. ???
-2. ???
+1. Air Craft
+2. Medic House
 
 (Required) Five other kinds of objects that you created (possibly in previous assignments):
-3. ???
-4. ???
-5. ???
-6. ???
-7. ???
+3. Flag
+4. Helicopter
+5. Cone Tree
+6. Artillery Cannon
+7. Watchtower
 
 (Optional) Backup Objects (more objects that you created, in case the ones above don't count):
-- ???
-- ???
-- ???
+- None
+- None
+- None
 
 At least on of each type of object:
-Building/structure: ???
-Vehicle: ???
-Natural Element: ???
+Building/structure: Military Tent
+Vehicle: Tank
+Natural Element: Cone Tree
 
 Object loaded from a model file:
-Model: ???
+Model: Crate box
 
 An object with a shader that you wrote:
-ShaderObj: ???
+ShaderObj: Flag
 
 Other Objects that you would like to note:
-???
+None

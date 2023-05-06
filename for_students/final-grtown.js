@@ -27,6 +27,9 @@ import { Soldier } from "./soldier.js";
 import { Helicopter } from "./helicopter.js";
 import { Medhouse } from "./medhouse.js";
 import { Flag } from "./flag.js";
+import { ConeTree } from "./conetree.js"
+import { Crate } from "./crate.js";
+import { WatchTower } from "./watchtower.js";
 import { Ground } from "./groundplane.js";
 
 function convertAngle(degree) {
@@ -39,7 +42,6 @@ function convertAngle(degree) {
  */
 
 // make the world
-
 let world = new GrWorld({
     width: 800,
     height: 600,
@@ -81,25 +83,43 @@ tent1.setPos(15,0,9);
 tent1.objects[0].rotateY(convertAngle(-90));
 
 let soldier1 = new Soldier();
-soldier1.setPos(10,0,6);
-soldier1.objects[0].rotateY(convertAngle(-45));
+soldier1.setPos(-8,0,9);
+soldier1.objects[0].rotateY(convertAngle(100));
 let soldier2 = new Soldier();
-soldier2.setPos(-8,0,9);
-soldier2.objects[0].rotateY(convertAngle(100));
+soldier2.setPos(10,0,6);
+soldier2.objects[0].rotateY(convertAngle(-45));
 let soldier3 = new Soldier();
 soldier3.setPos(-6,0,11);
 soldier3.objects[0].rotateY(convertAngle(130))
 let soldier4 = new Soldier();
 soldier4.setPos(7,0,-11);
 soldier4.objects[0].rotateY(convertAngle(-45));
+let soldier5 = new Soldier();
+soldier5.setPos(3,0,5);
+soldier5.objects[0].rotateY(convertAngle(-45));
+let soldier6 = new Soldier();
+soldier6.setPos(4,0,0);
+soldier6.objects[0].rotateY(convertAngle(-80));
+let soldier7 = new Soldier();
+soldier7.setPos(-2,0,-7);
+soldier7.objects[0].rotateY(convertAngle(30));
+let soldier8 = new Soldier();
+soldier8.setPos(-8,0,-9);
+soldier8.objects[0].rotateY(convertAngle(-30));
+
 world.add(soldier1);
 world.add(soldier2);
 world.add(soldier3);
 world.add(soldier4);
+world.add(soldier5);
+world.add(soldier6);
+world.add(soldier7);
+world.add(soldier8);
 
-let heli1 = new Helicopter();
+let heli1 = new Helicopter(15,1);
 world.add(heli1);
-heli1.setPos(0,15,0);
+let heli2 = new Helicopter(8,-1);
+world.add(heli2);
 
 let med = new Medhouse(true);
 world.add(med);
@@ -113,6 +133,54 @@ med3.setPos(0,0,-18);
 
 let flag = new Flag();
 world.add(flag);
+
+let conetree1 = new ConeTree();
+world.add(conetree1);
+conetree1.setPos(-15,2,16);
+let conetree2 = new ConeTree();
+world.add(conetree2);
+conetree2.setPos(-17,2,10);
+let conetree3 = new ConeTree();
+world.add(conetree3);
+conetree3.setPos(-12,2,12);
+let conetree4 = new ConeTree();
+world.add(conetree4);
+conetree4.setPos(-9,2,17);
+let conetree5 = new ConeTree();
+world.add(conetree5);
+conetree5.setPos(-14,2,5);
+let conetree6 = new ConeTree();
+world.add(conetree6);
+conetree6.setPos(-4,2,3);
+let conetree7 = new ConeTree();
+world.add(conetree7);
+conetree7.setPos(15,2,-14);
+let conetree8 = new ConeTree();
+world.add(conetree8);
+conetree8.setPos(9,2,-17);
+let conetree9 = new ConeTree();
+world.add(conetree9);
+conetree9.setPos(17,2,-3);
+let conetree10 = new ConeTree();
+world.add(conetree10);
+conetree10.setPos(-15,2,-8);
+
+let crate1 = new Crate();
+world.add(crate1);
+crate1.setPos(6,0,3);
+crate1.objects[0].rotateY(convertAngle(30));
+let crate2 = new Crate();
+world.add(crate2);
+crate2.setPos(7.5,0,2);
+crate2.objects[0].rotateY(convertAngle(50));
+let crate3 = new Crate();
+world.add(crate3);
+crate3.setPos(6.5,1.5,2.5);
+crate3.objects[0].rotateY(convertAngle(40));
+
+let tower1 = new WatchTower();
+world.add(tower1);
+tower1.setPos(0,10,0)
 
 // while making your objects, be sure to identify some of them as "highlighted"
 
@@ -134,6 +202,7 @@ highlight("GreenTank");
 highlight("Tent");
 highlight("Soldier");
 highlight("Helicopter");
+highlight("Flag");
 
 /** 
 world.scene.traverse(obj => obj.castShadow = true);

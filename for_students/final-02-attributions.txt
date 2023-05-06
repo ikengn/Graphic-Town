@@ -1,3 +1,12 @@
 List all attributions here, this include "self-attributions":
 
-???
+Skybox: https://opengameart.org/content/ulukais-space-skyboxes
+Camouflage: https://www.vecteezy.com/free-vector/army-texture
+Green tank: https://poly.pizza/m/egcLMSGiuA
+Ground: https://classic-battlefield-modding.fandom.com/wiki/Texture_System_in_BF2
+Tent: https://poly.pizza/m/vQANVbSE0v
+Soldier: https://poly.pizza/m/XT8jgwSesV
+Plus texture: https://stock.adobe.com/search/images?k=red+plus+sign
+Trunk texture: https://www.istockphoto.com/photo/closeup-of-tree-trunk-gm171298174-20792533
+Crate: https://poly.pizza/m/oTD0P0yGLG
+Leaf texture: https://stock.adobe.com/search?k=pine%20leaf%20texture

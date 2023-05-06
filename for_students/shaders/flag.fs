@@ -1,22 +1,31 @@
 varying vec2 v_uv;
+uniform vec3 color;
+const float PI = 3.14;
 
-/* colors for the checkerboard */
-uniform vec3 light;
-uniform vec3 dark;
+vec2 zigzag(vec2 _st, float _zoom){
+    _st *= _zoom;
+    if (fract(_st.y * 0.5) > 0.5){
+        _st.x = _st.x+0.5;
+        _st.y = 1.0-_st.y;
+    }
+    return fract(_st);
+}
 
-/* number of checks over the UV range */
-uniform float checks;
+float fillY(vec2 _st, float pct, float antia){
+  return smoothstep(pct - antia, pct, _st.y);
+}
 
-void main()
-{
-    float x = v_uv.x * checks;
-    float y = v_uv.y * checks;
+void main(){
+  vec2 v_uv = v_uv;
+  vec3 color = vec3(0.0);
 
-    float xc = floor(x);
-    float yc = floor(y);
+  v_uv = zigzag(v_uv * vec2(1.0,2.0),5.0);
+  float x = v_uv.x * 2.0;
+  float color1 = floor(1.0 + sin(x * PI));
+  float color2 = floor(1.0 + sin((x + 1.0) * PI));
+  float f = fract(x);
 
-    float dc = step(1.0, mod(xc + yc, 2.0));
-    vec3 color = mix(light, dark, dc);
+  color = vec3(fillY(v_uv,mix(color2,color1,f),0.01));
 
-    gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(color, 1.0);
 }

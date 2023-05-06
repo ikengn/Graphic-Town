@@ -6,7 +6,7 @@ function convertAngle(degree) {
 }
 
 export class Helicopter extends GrObject {
-    constructor() {
+    constructor(height, dir) {
         let heli = new T.Group();
 
         let body_geom = new T.CylinderGeometry(1.25,1.25,3);
@@ -120,13 +120,15 @@ export class Helicopter extends GrObject {
         this.heli = heli;
         this.start = 0;
         this.rideable = heli;
+        this.height = height;
+        this.dir = dir;
     }
 
     stepWorld(delta) {
         this.start += delta;
-        let x = 15*Math.cos(this.start/1000);
-        let z = 15*Math.sin(this.start/1000);
-        let newPosition = new T.Vector3(x, 15, z);
+        let x = 15*Math.cos(this.dir * this.start/1000);
+        let z = 15*Math.sin(this.dir * this.start/1000);
+        let newPosition = new T.Vector3(x, this.height, z);
         let direction = newPosition.clone().sub(this.heli.position);
         this.heli.position.copy(newPosition);
         this.heli.lookAt(this.heli.position.clone().add(direction));
