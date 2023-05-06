@@ -23,6 +23,10 @@ import { AirCraftArmy } from "./aircraft.js"
 import { GreenTank } from "./tank.js";
 import { Cannon } from "./cannon.js";
 import { Tent } from "./tent.js";
+import { Soldier } from "./soldier.js";
+import { Helicopter } from "./helicopter.js";
+import { Medhouse } from "./medhouse.js";
+import { Flag } from "./flag.js";
 import { Ground } from "./groundplane.js";
 
 function convertAngle(degree) {
@@ -76,6 +80,40 @@ world.add(tent1);
 tent1.setPos(15,0,9);
 tent1.objects[0].rotateY(convertAngle(-90));
 
+let soldier1 = new Soldier();
+soldier1.setPos(10,0,6);
+soldier1.objects[0].rotateY(convertAngle(-45));
+let soldier2 = new Soldier();
+soldier2.setPos(-8,0,9);
+soldier2.objects[0].rotateY(convertAngle(100));
+let soldier3 = new Soldier();
+soldier3.setPos(-6,0,11);
+soldier3.objects[0].rotateY(convertAngle(130))
+let soldier4 = new Soldier();
+soldier4.setPos(7,0,-11);
+soldier4.objects[0].rotateY(convertAngle(-45));
+world.add(soldier1);
+world.add(soldier2);
+world.add(soldier3);
+world.add(soldier4);
+
+let heli1 = new Helicopter();
+world.add(heli1);
+heli1.setPos(0,15,0);
+
+let med = new Medhouse(true);
+world.add(med);
+med.setPos(-7,0,-18);
+let med2 = new Medhouse(false);
+world.add(med2);
+med2.setPos(-14,0,-18);
+let med3 = new Medhouse(false);
+world.add(med3);
+med3.setPos(0,0,-18);
+
+let flag = new Flag();
+world.add(flag);
+
 // while making your objects, be sure to identify some of them as "highlighted"
 
 ///////////////////////////////////////////////////////////////
@@ -94,12 +132,13 @@ highlight("AirCraftArmy");
 highlight("Cannon");
 highlight("GreenTank");
 highlight("Tent");
+highlight("Soldier");
+highlight("Helicopter");
 
 /** 
 world.scene.traverse(obj => obj.castShadow = true);
 world.scene.traverse(obj => obj.receiveShadow = true);
-world.renderer.shadowMap.enabled = true;
-*/
+world.renderer.shadowMap.enabled = true;*/
 
 world.scene.background = new T.CubeTextureLoader().setPath("../for_students/images/").load([
     "redeclipse_ft.png", "redeclipse_bk.png",

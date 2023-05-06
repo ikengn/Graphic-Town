@@ -4,12 +4,12 @@ function convertAngle(degree) {
     return degree * Math.PI/180;
 }
 
-export class Tent extends L.FbxGrObject {
+export class Soldier extends L.FbxGrObject {
     constructor() {
         super({
-            fbx: "../for_students/objects/tent.fbx",
-            norm: 20.0,
-            name: "Tent"
+            fbx: "../for_students/objects/soldier.fbx",
+            norm: 4.0,
+            name: "Soldier"
         });
     }
     stepWorld(delta) {}

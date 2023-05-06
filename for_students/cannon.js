@@ -71,19 +71,22 @@ export class Cannon extends GrObject {
         bone.add(barrel);
 
         // wheel
-        let wheelGeometry = new T.TorusGeometry(.5, 0.2, 16, 100);
-        let wheelMaterial = new T.MeshStandardMaterial({
+        let wheel_shape = new T.Shape();
+        wheel_shape.arc(0,0,.5,0,Math.PI*2);
+        let wheel_geom = new T.ExtrudeGeometry(wheel_shape, extrudeSettings);
+        let wheel_mat = new T.MeshStandardMaterial({
             color: 0x000000,
             metalness: 0.5,
             roughness: 0.5,
         });
 
-        let wheel = new T.Mesh(wheelGeometry, wheelMaterial);
+        let wheel = new T.Mesh(wheel_geom, wheel_mat);
         wheel.rotateY(convertAngle(90));
         cannon.add(wheel);
-        wheel.translateZ(1.2);
+        wheel.translateZ(1.05);
         wheel.translateY(-.35);
         wheel.translateX(-0.25);
+        wheel.scale.set(1,1,.3);
         let wheel2 = wheel.clone();
         wheel2.translateZ(-2.4);
         cannon.add(wheel2);

@@ -35,6 +35,7 @@ export class AirCraftArmy extends GrObject {
             map: texture
         })
         let body = new T.Mesh(geom, material);
+        body.rotateY(convertAngle(90));
 
         // glass
         let glass_geom = new T.BoxGeometry(.5,.1,1);
@@ -42,9 +43,10 @@ export class AirCraftArmy extends GrObject {
             color: "black",
             metalness: 0.0,
             roughness: 0.0
-        })
+        });
         let glass = new T.Mesh(glass_geom, glass_mat);
         glass.translateY(1.25);
+        glass.rotateY(convertAngle(90));
         glass.translateX(-3.85);
         glass.translateZ(.5);
         glass.rotateZ(convertAngle(65));
@@ -61,15 +63,17 @@ export class AirCraftArmy extends GrObject {
         let wing_geom = new T.ExtrudeGeometry(wing_shape, extrudeSettings);
         let wing = new T.Mesh(wing_geom, material);
         wing.scale.set(1,1,.1);
-        wing.translateY(1);
+        wing.translateY(1.2);
         wing.translateZ(.5);
-        wing.rotateY(convertAngle(90));
+        wing.translateX(.5);
+        wing.rotateY(convertAngle(180));
         wing.rotateX(convertAngle(-90));
 
         // back wing
         let back_wing = wing.clone();
         back_wing.scale.set(.5,.5,.1);
-        back_wing.translateY(-4.9);
+        back_wing.translateY(-5.4);
+        back_wing.translateZ(-.25);
 
         // crop
         let crop_shape = new T.Shape();
@@ -81,22 +85,19 @@ export class AirCraftArmy extends GrObject {
         let crop = new T.Mesh(crop_geom, material);
         crop.scale.set(1,1,.1);
         crop.translateY(1);
-        crop.translateX(4.9);
+        crop.rotateY(convertAngle(90));
+        crop.translateX(5);
         crop.translateZ(0.5);
 
         // propeller
         let propeller = new T.Group();
-        let propeller_mat = new T.MeshStandardMaterial({
-            color: "grey",
-            metalness: 0.0,
-            roughness: 0.75
-        })
         let cross1 = new T.Mesh(new T.BoxGeometry(0.1, 2, 0.25), glass_mat);
         propeller.add(cross1);
         let cross2 = new T.Mesh(new T.BoxGeometry(0.1, 0.25, 2), glass_mat);
         propeller.add(cross2);
-        propeller.translateY(.35);
-        propeller.translateX(-5);
+        propeller.translateY(.5);
+        propeller.rotateY(convertAngle(90));
+        propeller.translateX(-5.05);
         propeller.translateZ(.5);
 
         aircraft.add(body);
@@ -106,11 +107,13 @@ export class AirCraftArmy extends GrObject {
         aircraft.add(crop);
         aircraft.add(propeller);
 
+        aircraft.translateY(10);
+
         super("AirCraftArmy", aircraft);
         this.aircraft = aircraft;
         this.propeller = propeller;
         this.start = 0;
-        //this.rideable = this.aircraft;
+        this.rideable = this.aircraft;
     }
 
     stepWorld(delta) {
@@ -121,7 +124,6 @@ export class AirCraftArmy extends GrObject {
         let direction = newPosition.clone().sub(this.aircraft.position);
         this.aircraft.position.copy(newPosition);
         this.aircraft.lookAt(this.aircraft.position.clone().add(direction));
-        this.aircraft.rotateY(convertAngle(90));
         this.start += delta / 2000;
     }
 }
