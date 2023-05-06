@@ -4,11 +4,11 @@ Three different behaviors that you made:
 3. Helicopter movements
 
 One behavior that is not simple:
-Not simple: Helicopter movements
+Not simple: Air Craft movements
 
 Animated Articulated Figure:
-Articulated: Helicopter movements
+Articulated: Air Craft movements
 
 Other Behaviors that you made: (backup in case something above doesn't count)
-- None
+- Helicopter movements
 - None
